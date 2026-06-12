@@ -1,5 +1,7 @@
 Copyright (C) 2022-2026 FZI Forschungszentrum Informatik
+
 Authors: Sven Nitzsche, Andreas Faust, Sebastian Sinn
+
 Contact: nitzsche@fzi.de
 
 This software is licensed under the European Union Public License (EUPL)
