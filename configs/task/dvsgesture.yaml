@@ -1,0 +1,31 @@
+name: "dvsgesture" #needs to be "dvsgesture", "shd" or "nmnist" - will fail otherwise.
+params:
+  # Training parameters
+  batch_size: 32
+  n_epochs: 50 # 50 from optuna
+  lr: 0.001 # learning rate, determined by optuna
+  layer_sizes: [2048, 256, 256, 11] # number of neurons in each layer. 11 classes in dvsgesture, 32x32x2 input size
+  spike_rate_reg: 0.0001 # spike rate regularization weight. this penalty is imposed on each spike equally.
+  #original SRR was 1.6276041666666666e-05, with which the other params were determined
+  #These overwrite the default surrogate method and alpha from the neuron configs
+  surrogate_method: "atan_derivative" # surrogate method 
+  surrogate_alpha: 1.0
+
+  # Dataset parameters
+  dataset_path: "./datasets" # path to the dataset - will download if not present
+  desired_sensor_size: [32, 32, 2] #downsampled sensor size to 32x32
+  dt: 8000 # 8ms
+  n_steps: 100 # 800ms of video is shown to the network in 100 steps
+  inp_mean: 0.42 
+  inp_var: 4.67 #determined with tests/determine_meanstd_task.py. 20% threshold was used to ignore low activations
+
+  # augmentation parameters
+  random_start_offset: false # whether to randomly offset the start of the video (some videos are longer than 800ms)
+  noise: 1.1523e-05 
+  random_time_scale: [0.8, 1.2] # time scale augmentation, determined by optuna
+  random_image_scale: [0.978, 1.022]
+  random_image_offset: [-0.0807, 0.0807]
+  grad_clip_norm: 10.0
+
+  weight_decay: 0.00001 # L2 regularization weight, determined by optuna
+

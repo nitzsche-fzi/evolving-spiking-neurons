@@ -1,0 +1,14 @@
+pyyaml==6.0.3
+tqdm==4.67.1
+seaborn==0.13.2
+matplotlib==3.9.4
+numpy==1.24.4
+torch==2.8.0
+scipy==1.13.1
+tonic==1.6.0
+optuna==4.6.0
+git+https://github.com/ASFaust/SparseDataModel.git
+
+# NOTE: this project also depends on the `esn` package (imported as `esn`),
+# which is a separate internal package not on PyPI. Install it from its own
+# repository (e.g. `pip install -e ./esn`) before running any scripts here.

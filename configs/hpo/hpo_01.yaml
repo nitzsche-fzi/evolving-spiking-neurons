@@ -1,0 +1,45 @@
+#the layer sizes get translated to [input_size, layer1_size, layer2_size, output_size] in the config
+layer1_size:
+  type: "int"
+  range: [16, 256]
+
+layer2_size:
+  type: "int"
+  range: [16, 256]
+
+#this gets translated to [1.0-a, 1.0+a] in the config
+time_scale_augmentation:
+  type: "float"
+  range: [0.001, 0.2]
+  log: true
+
+lr:
+  type: "float"
+  range: [0.0001,0.01 ] 
+  log: true
+
+surrogate_alpha:
+  type: "float"
+  range: [0.1, 100.0]
+  log: true
+
+grad_clip_norm:
+  type: "float"
+  range: [0.1, 100.0]
+  log: true
+
+weight_decay:
+  type: "float"
+  range: [0.00001, 0.1]
+  log: true
+
+noise:
+  type: "float"
+  range: [0.00001, 0.1]
+  log: true
+
+spike_rate_reg:
+  type: "float"
+  range: [0.00001, 0.1]
+  log: true
+  

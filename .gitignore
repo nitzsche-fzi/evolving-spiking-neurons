@@ -1,0 +1,15 @@
+# ignore python compiled files
+*.pyc
+#the pycache directories
+*__pycache__*
+#result directory and all subdirectories
+results/
+lib/neuron_eval/hardware/outputs
+lib/neuron_eval/hardware/src
+#ignore profile.out
+profile.out
+#ignore log_dir
+log_dir/
+#tmp dir
+tmp/
+.pytest_cache/

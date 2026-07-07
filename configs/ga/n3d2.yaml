@@ -1,0 +1,18 @@
+#first GA configuration, currently for testing purposes
+neurons: "results/sampled_neurons/1000x_n3d2.pkl"
+tasks: ["configs/task/dvsgesture.yaml","configs/task/shd.yaml"]
+
+individuals_per_gb: [15,15] #how many individuals to allocate per GB of GPU memory (different for different tasks)
+gpu_headroom_gb: 0.5 # how much GPU memory not to use for evaluation, to leave room for other processes
+
+n_survivors: 200 # how many individuals to use to model the distribution. 
+#best individuals are used across all generations, irrespective of the generation they were sampled in
+
+sampling_config: "configs/sampling/n3d2.yaml" # sampling configuration file
+
+# Hardware evaluation parameters
+enable_hardware_eval: true
+include_hardware_fitness: true
+hardware_fitness_factor: 0.4
+max_hw_processes: 55 # requires ~3.8GB of RAM per process with Vivado 2024 on Ubuntu 22
+hardware_idle_energy_factor: 0.0

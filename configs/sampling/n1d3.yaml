@@ -1,0 +1,19 @@
+n_states: 1 #number of states of each neuron (each has their own differential equation)
+degree: 3 #degree of the polynomial used to model the differential equations
+polynomial_std: 1.0 #standard deviation of the polynomial coefficients
+state_delta: 0.1 #euler integration step size
+min_terms_per_polynomial: 1 #minimum number of nonzero terms in each polynomial
+max_terms_per_polynomial: 3 #maximum number of nonzero terms in each polynomial
+enforce_degree: true #wether to reject neurons that dont use any terms of the polynomial
+threshold_mean: 10.0
+threshold_std: 4.0
+reset_std: 0.1
+min_terms_per_reset: 0
+max_terms_per_reset: 2
+max_rs_steps: 1000 #resting state determination steps
+rs_delta_eps: 0.0001 #if state change is less than this, resting state is reached
+max_state_abs: 20.0 #maximum absolute value of the state
+n_trials: 100 #number of trials to run for each neuron (each trial is different normally distributed input noise)
+n_trial_steps: 200 #number of steps in each trial
+min_spike_rate: 0.01  # 1% spiking
+max_spike_rate: 0.1  # 10% spiking

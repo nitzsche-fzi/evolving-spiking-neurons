@@ -1,0 +1,28 @@
+name: "shd"  # must be "dvsgesture", "shd", or "nmnist"
+
+params:
+  # Training parameters
+  batch_size: 32
+  n_epochs: 10
+  lr: 0.001  # learning rate, determined by optuna
+  layer_sizes: [350, 256, 256, 20] 
+  spike_rate_reg: 0.0  # same as dvsgesture; adjust if needed
+
+  #These overwrite the default surrogate method and alpha from the neuron configs
+  surrogate_method: "atan_derivative"  # surrogate method
+  surrogate_alpha: 1.0
+
+  # Dataset parameters
+  dataset_path: "./datasets"
+  desired_sensor_size: [350, 1, 1]
+  dt: 10  # from old SHD config (in ms)
+  inp_mean: 0.84 #determined with tests/determine_meanstd_task.py
+  inp_var: 1.548 #determined with tests/determine_meanstd_task.py. 20% threshold was used to ignore low activations
+
+  # augmentation parameters
+  noise: 0.0001  
+  random_time_scale: [0.8, 1.2]  # time scale augmentation, determined by optuna
+
+  grad_clip_norm: 10.0  # gradient clipping value, determined by optuna
+  
+  weight_decay: 0.00001  # L2 regularization weight
