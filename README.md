@@ -103,15 +103,15 @@ We recommend one CPU core and ~4 GB of RAM per parallel hardware process. The de
 
 ## Quick start
 
-After completing the setup, you can run the commands below from the repository root to evolve new spiking neurons. This example samples a population of `n1d2` neurons and evolves them with the matching GA config.
+After completing the setup, you can run the commands below from the repository root to evolve new spiking neurons. This example samples a population of `n2d1` neurons and evolves them with the matching GA config.
 
 1. Sample an initial neuron population:
 
 ```bash
-python3 scripts/sampling/sample_neurons.py configs/sampling/n1d2.yaml 1000 results/neurons/sampled/1000x_n1d2.pkl
+python3 scripts/sampling/sample_neurons.py configs/sampling/n2d1.yaml 1000 results/neurons/sampled/1000x_n2d1.pkl
 ```
 
-2. If you do not have Vivado/Vitis configured, first edit `configs/ga/n1d2.yaml`
+2. If you do not have Vivado/Vitis configured, first edit `configs/ga/n2d1.yaml`
 and set:
 
 ```yaml
@@ -122,37 +122,37 @@ include_hardware_fitness: false
 3. Start a short GA run:
 
 ```bash
-python3 scripts/ga/start_ga.py configs/ga/n1d2.yaml results/ga/n1d2.pkl 5
+python3 scripts/ga/start_ga.py configs/ga/n2d1.yaml results/ga/n2d1.pkl 5
 ```
 
-The last argument is the number of generations. Increase it for a real run, good results can be achieved with 15-30 generations. Intermediate GA state is saved to `results/ga/n1d2.pkl` after each generation, so the run can be continued later:
+The last argument is the number of generations. Increase it for a real run, good results can be achieved with 15-30 generations. Intermediate GA state is saved to `results/ga/n2d1.pkl` after each generation, so the run can be continued later:
 
 ```bash
-python3 scripts/ga/resume_ga.py results/ga/n1d2.pkl 5
+python3 scripts/ga/resume_ga.py results/ga/n2d1.pkl 5
 ```
 
 4. Extract the best evolved neurons:
 
 ```bash
-python3 scripts/evaluation/extract_best_neurons.py results/ga/n1d2.pkl 20 results/neurons/best/20x_n1d2.pkl --write-config
+python3 scripts/evaluation/extract_best_neurons.py results/ga/n2d1.pkl 20 results/neurons/best/20x_n2d1.pkl --write-config
 ```
 
 5. Re-evaluate the extracted neurons with repeated trials:
 
 ```bash
-python3 scripts/evaluation/evaluate_neurons.py results/neurons/best/20x_n1d2.pkl results/neurons/best/config.yaml 10 --output_path n1d2_best
+python3 scripts/evaluation/evaluate_neurons.py results/neurons/best/20x_n2d1.pkl results/neurons/best/config.yaml 10 --output_path n2d1_best
 ```
 
 6. Optionally, generate diagnostic plots for the GA run:
 
 ```bash
-python3 scripts/visualization/visualize_ga.py results/ga/n1d2.pkl
+python3 scripts/visualization/visualize_ga.py results/ga/n2d1.pkl
 ```
 
-The visualizer writes plots next to the GA file under `results/ga/visualizations/n1d2/`. It creates progress, population, fitness, energy, survivor, spike-rate, and genome-slice plots. You can pass an optional smoothing window as the second argument, for example:
+The visualizer writes plots next to the GA file under `results/ga/visualizations/n2d1/`. It creates progress, population, fitness, energy, survivor, spike-rate, and genome-slice plots. You can pass an optional smoothing window as the second argument, for example:
 
 ```bash
-python3 scripts/visualization/visualize_ga.py results/ga/n1d2.pkl 20
+python3 scripts/visualization/visualize_ga.py results/ga/n2d1.pkl 20
 ```
 
 7. You could now go ahead and implement the best neuron in the Evolved Spiking Neurons package, using the already implemented neurons there as blueprint, and use it just like any other neuron in your preferred SNN development flow.
@@ -182,7 +182,7 @@ Task-specific settings such as `batch_size`, `n_epochs`, `layer_sizes`, augmenta
 
 The PMSN-CLR sampling configs are named by state count and polynomial degree:
 
-- `configs/sampling/n1d2.yaml`: 1 state, degree 2
+- `configs/sampling/n2d1.yaml`: 1 state, degree 2
 - `configs/sampling/n2d1.yaml`: 2 states, degree 1
 - `configs/sampling/n3d2.yaml`: 3 states, degree 2
 
@@ -224,7 +224,7 @@ Config: GA config (`configs/ga/*.yaml`) that references tasks and the sampling c
 Example call:
 
 ```
-python3 scripts/ga/start_ga.py configs/ga/n1d2.yaml results/ga/n1d2.pkl 20
+python3 scripts/ga/start_ga.py configs/ga/n2d1.yaml results/ga/n2d1.pkl 20
 ```
 
 ### `resume_ga.py`
@@ -234,7 +234,7 @@ Config: GA pickle from `start_ga.py`, with optional GA config override (`configs
 Example call:
 
 ```
-python3 scripts/ga/resume_ga.py results/ga/n1d2.pkl 10
+python3 scripts/ga/resume_ga.py results/ga/n2d1.pkl 10
 ```
 
 ### `extract_best_neurons.py`
@@ -244,7 +244,7 @@ Config: reads GA config from the input pickle; `--write-config` can dump it alon
 Example call:
 
 ```
-python3 scripts/evaluation/extract_best_neurons.py results/ga/n1d2.pkl 20 results/best_neurons/20x_n1d2.pkl --write-config
+python3 scripts/evaluation/extract_best_neurons.py results/ga/n2d1.pkl 20 results/best_neurons/20x_n2d1.pkl --write-config
 ```
 
 ### `evaluate_neurons.py`
@@ -254,7 +254,7 @@ Config: GA config (`configs/ga/*.yaml`), or a copied `config.yaml` from `extract
 Example call:
 
 ```
-python3 scripts/evaluation/evaluate_neurons.py results/best_neurons/20x_n1d2.pkl configs/ga/n1d2.yaml 10 results/final/n1d2
+python3 scripts/evaluation/evaluate_neurons.py results/best_neurons/20x_n2d1.pkl configs/ga/n2d1.yaml 10 results/final/n2d1
 ```
 
 ## Configs
