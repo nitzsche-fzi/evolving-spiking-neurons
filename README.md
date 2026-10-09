@@ -40,7 +40,7 @@ pip install -r requirements.txt
 The project also depends on the external `esn` package, which is imported as `esn` and is not part of this repository. Install it from the companion repository. 
 
 ```bash
-pip install git+<ESN_REPOSITORY_URL> # To be added after publication, use editable install for now
+pip install git+<https://github.com/nitzsche-fzi/spiking-neurons> 
 ```
 
 For editable development before publication, download the `spiking-neurons`
