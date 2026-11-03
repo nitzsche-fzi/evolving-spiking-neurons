@@ -7,8 +7,9 @@ torch==2.8.0
 scipy==1.13.1
 tonic==1.6.0
 optuna==4.6.0
-git+https://github.com/ASFaust/SparseDataModel.git
+# Zero-inflated Gaussian EDA used for GA mutation, pinned to the version used for the paper
+sparse-data-modeling @ git+https://github.com/ASFaust/SparseDataModel.git@821dca921c81b07f1d4b9a8e2b9aea47de05d586
 
-# NOTE: this project also depends on the `esn` package (imported as `esn`),
-# which is a separate internal package not on PyPI. Install it from its own
-# repository (e.g. `pip install -e ./esn`) before running any scripts here.
+# NOTE: this project also depends on the `esn` package (the evolved neuron
+# models), which is not on PyPI. Install it from
+# https://github.com/nitzsche-fzi/spiking-neurons (see README).

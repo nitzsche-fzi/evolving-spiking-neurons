@@ -1,6 +1,6 @@
 # Evolving Spiking Neurons
 
-A repository for exploring spiking neuron models using a evolutionary genetic algorithm with various tasks and hardware evaluation.
+A repository for exploring spiking neuron models using an evolutionary genetic algorithm with various tasks and hardware evaluation.
 
 ## Repository layout
 
@@ -9,10 +9,10 @@ A repository for exploring spiking neuron models using a evolutionary genetic al
 - `configs/` — YAML configs grouped by purpose (see [Configs](#configs)).
 - `scripts/` — runnable entry-point scripts, grouped by pipeline stage:
   - `scripts/sampling/` — `sample_neurons.py`, `sample_neurons_LIF.py`
-  - `scripts/ga/` — `start_ga.py`, `resume_ga.py`, `resume_ga_fill_hw.py`, `ga_info.py`, `truncate_ga_file.py`
-  - `scripts/evaluation/` — `extract_best_neurons.py`, `evaluate_neurons.py`, `aggregate_eval_results.py`, `extract_all_best_neurons.sh`
+  - `scripts/ga/` — `start_ga.py`, `resume_ga.py`, `ga_info.py`, `truncate_ga_file.py`
+  - `scripts/evaluation/` — `extract_best_neurons.py`, `evaluate_neurons.py`, `extract_all_best_neurons.sh`
   - `scripts/hpo/` — `optimize_hyperparams.py`, `plot_hpo_slices.py`
-  - `scripts/visualization/` — `visualize_ga.py`, `visualize_single_neuron.py`, `visualize_all_ga.sh`
+  - `scripts/visualization/` — `visualize_ga.py`, `visualize_single_neuron.py`
   - `scripts/training/` — `train_single_neuron.py`
 - `tests/` — pytest suite, run via `run_tests.sh` at the repo root.
 
@@ -37,17 +37,16 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-The project also depends on the external `esn` package, which is imported as `esn` and is not part of this repository. Install it from the companion repository. 
+The project also depends on the `esn` package (the evolved neuron models), which is not part of this repository. Install it from the companion repository [spiking-neurons](https://github.com/nitzsche-fzi/spiking-neurons):
 
 ```bash
-pip install git+<https://github.com/nitzsche-fzi/spiking-neurons> 
+pip install git+https://github.com/nitzsche-fzi/spiking-neurons.git
 ```
 
-For editable development before publication, download the `spiking-neurons`
-repository as a zip from the anonymous artifact page, extract it next to this
-repository, and install the extracted folder in editable mode:
+For editable development, clone it next to this repository and install it in editable mode:
 
 ```bash
+git clone https://github.com/nitzsche-fzi/spiking-neurons.git ../spiking-neurons
 pip install -e ../spiking-neurons
 ```
 
