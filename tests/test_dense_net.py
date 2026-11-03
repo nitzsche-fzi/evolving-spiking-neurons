@@ -13,18 +13,17 @@ parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-helpers_path = Path(__file__).resolve().parent / "izhikevich_test_utils.py"
+helpers_path = Path(__file__).resolve().parent / "neuron_test_utils.py"
 helpers_spec = importlib.util.spec_from_file_location(
-    "tests.izhikevich_test_utils", helpers_path
+    "tests.neuron_test_utils", helpers_path
 )
 if helpers_spec is None or helpers_spec.loader is None:
-    raise ImportError("Unable to load izhikevich_test_utils.py")
+    raise ImportError("Unable to load neuron_test_utils.py")
 helpers_module = importlib.util.module_from_spec(helpers_spec)
 helpers_spec.loader.exec_module(helpers_module)
 
 from lib.neuron_eval.combined_networks import dense_net
 from lib.neuron_eval.combined_networks.clip_grad_norm import clip_population_grad_norm
-IZHI_PARAMS = helpers_module.IZHI_PARAMS
 _create_test_neuron_params = helpers_module.create_test_neuron_params
 
 

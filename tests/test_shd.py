@@ -13,7 +13,6 @@ import yaml
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
 
-from esn.neurons.clr import Izhikevich
 from lib.neuron_eval.combined_networks.pmsn_clr import PMSN_CLR as PMSN_CLR_Lib
 from lib.neuron_eval.tasks import get_task
 

@@ -13,12 +13,12 @@ torch = pytest.importorskip("torch")
 parent_dir = Path(__file__).resolve().parents[1]
 if str(parent_dir) not in sys.path:
     sys.path.append(str(parent_dir))
-helpers_path = Path(__file__).resolve().parent / "izhikevich_test_utils.py"
+helpers_path = Path(__file__).resolve().parent / "neuron_test_utils.py"
 helpers_spec = importlib.util.spec_from_file_location(
-    "tests.izhikevich_test_utils", helpers_path
+    "tests.neuron_test_utils", helpers_path
 )
 if helpers_spec is None or helpers_spec.loader is None:
-    raise ImportError("Unable to load izhikevich_test_utils.py")
+    raise ImportError("Unable to load neuron_test_utils.py")
 helpers_module = importlib.util.module_from_spec(helpers_spec)
 helpers_spec.loader.exec_module(helpers_module)
 create_test_neuron_params = helpers_module.create_test_neuron_params
@@ -56,7 +56,7 @@ def _synthetic_batch(task_params, population_size, device):
     return inputs, targets
 
 
-def test_single_izhikevich_neuron_trains_with_dvsgesture_config():
+def test_single_neuron_trains_with_dvsgesture_config():
     torch.manual_seed(0)
     device = torch.device("cpu")
     task_params = _load_dvsgesture_params()
