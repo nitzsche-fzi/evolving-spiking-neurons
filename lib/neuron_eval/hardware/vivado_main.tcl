@@ -5,7 +5,7 @@ set root_dir    $script_dir
 set reports_flow_dir [file join $root_dir scripts create_reports]
 
 source [file join $reports_flow_dir launch_synth.tcl]
-source [file join $reports_flow_dir report_gerneral.tcl]
+source [file join $reports_flow_dir report_general.tcl]
 source [file join $reports_flow_dir report_power.tcl]
 source [file join $script_dir vivado_project_flow.tcl]
 
@@ -39,7 +39,7 @@ set report_dir         [file join $outputs_dir reports]
 set report_dir_general [file join $report_dir general]
 set report_dir_power   [file join $report_dir power]
 if {! $run_implementation} {
-    report_gerneral_post_synth $report_dir_general $::vivado::synth_run_name
+    report_general_post_synth $report_dir_general $::vivado::synth_run_name
     report_power_post_synth    $report_dir_power   $::vivado::project_path $tb_name $sim_fileset
 }
 if {$save_checkpoints} { ::vivado::write_checkpoint $::vivado::synth_run_name }
@@ -47,7 +47,7 @@ if {$save_checkpoints} { ::vivado::write_checkpoint $::vivado::synth_run_name }
 ## Wait for implementation to finish and generate reports
 if {$run_implementation} {
     wait_on_runs $::vivado::impl_run_name
-    report_gerneral_post_impl $report_dir_general $::vivado::impl_run_name
+    report_general_post_impl $report_dir_general $::vivado::impl_run_name
     report_power_post_impl    $report_dir_power   $::vivado::project_path $tb_name $sim_fileset
     if {$save_checkpoints} { ::vivado::write_checkpoint $::vivado::impl_run_name }
 }

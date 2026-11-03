@@ -1,4 +1,4 @@
-proc report_gerneral_post_synth {output_path synth_run_name} {
+proc report_general_post_synth {output_path synth_run_name} {
     file mkdir $output_path
 
     open_run $synth_run_name
@@ -10,7 +10,7 @@ proc report_gerneral_post_synth {output_path synth_run_name} {
     report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1  -file ${output_path}/post_synth_timing-summary.rpt  -rpx ${output_path}/post_synth_timing-summary.rpx
 }
 
-proc report_gerneral_post_impl {output_path impl_run_name} {
+proc report_general_post_impl {output_path impl_run_name} {
     file mkdir $output_path
 
     open_run $impl_run_name
